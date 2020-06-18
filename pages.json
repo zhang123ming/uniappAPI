@@ -1,0 +1,88 @@
+{
+	"pages": [{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarTitleText": "首页",
+			// "navigationStyle": "custom",
+			"navigationBarBackgroundColor": "#007AFF",
+			"enablePullDownRefresh": true,
+			"app-plus": {
+				"titleView": false
+			}
+		}
+	}, {
+		"path": "pages/address/address",
+		"style": {
+			"navigationBarTitleText": "位置"
+
+		}
+	}, {
+		"path": "pages/media/media",
+		"style": {
+			"navigationBarTitleText": "媒体"
+		}
+	}, {
+		"path": "pages/equipment/equipment",
+		"style": {
+			"navigationBarTitleText": "设备"
+		}
+	}, {
+		"path": "pages/none/none",
+		"style": {}
+	}, {
+		"path": "pages/Interface/Interface",
+		"style": {
+			"navigationBarTitleText": "界面"
+		}
+	}],
+	"tabBar": {
+		"color": "#8a8a8a",
+		"selectedColor": "#d4237a",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath":"static/01.png",
+				"selectedIconPath":"static/02.png"
+
+
+			},
+			{
+				"pagePath": "pages/address/address",
+				"text": "位置",
+				"iconPath":"static/03.png",
+				"selectedIconPath":"static/04.png"
+
+			},
+			{
+				"pagePath": "pages/media/media",
+				// "text": "媒体",
+				"iconPath":"static/05.png",
+				"selectedIconPath":"static/06.png"
+
+			},
+			{
+				"pagePath": "pages/equipment/equipment",
+				"text": "设备",
+				"iconPath":"static/07.png",
+				"selectedIconPath":"static/08.png"
+
+			}, {
+				"pagePath": "pages/Interface/Interface",
+				"text": "界面",
+				"iconPath":"static/09.png",
+				"selectedIconPath":"static/10.png"
+			}
+
+
+		]
+	},
+
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#0055ff",
+		"backgroundColor": "#FFFFFF"
+	}
+}
