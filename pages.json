@@ -7,7 +7,8 @@
 			"navigationBarBackgroundColor": "#007AFF",
 			"enablePullDownRefresh": true,
 			"app-plus": {
-				"titleView": false
+				"titleView": false,//设置透明度
+				"scrollIndicator": "none"//隐藏侧边滚动条
 			}
 		}
 	}, {
