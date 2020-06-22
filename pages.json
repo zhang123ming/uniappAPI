@@ -35,7 +35,11 @@
 		"style": {
 			"navigationBarTitleText": "界面"
 		}
-	}],
+	}    ,{
+            "path" : "components/list/list",
+            "style" : {}
+        }
+    ],
 	"tabBar": {
 		"color": "#8a8a8a",
 		"selectedColor": "#d4237a",

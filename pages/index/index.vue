@@ -1,14 +1,22 @@
 <template>
 	<view class="container">
+		<list></list>
+		<navigator url="../none/none">
+			<button type="default">none页面跳转</button>
+		</navigator>
 		<uni-list>
-			<uni-list-item title="" note="" v-for="(item, index) in 1000">{{ item }}</uni-list-item>
+			<uni-list-item title="" note="" v-for="(item, index) in 100">{{ item }}==={{Math.random().toString().slice(2,6)|filterMoney}}</uni-list-item>
 		</uni-list>
 		<view class="to-top" @click="goTop"><image style="	width: 45px;height: 45px;border-radius: 50%;" src="../../static/01.png" mode="widthFix"></image></view>
 	</view>
 </template>
 
 <script>
+	import list from "../../components/list/list.vue"
 export default {
+	components:{
+		list
+	},
 	data() {
 		return {};
 	},
@@ -32,7 +40,7 @@ export default {
 		goTop: function(e) {
 			uni.pageScrollTo({
 				scrollTop: 0,
-				duration: 500
+				duration: 300
 			});
 		}
 	},
