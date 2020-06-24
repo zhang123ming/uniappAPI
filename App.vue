@@ -1,14 +1,8 @@
 <script>
 export default {
 	onLaunch: function() {
+		console.log('App onLaunch');
 		
-		uni.onTabBarMidButtonTap(function() {
-			uni.showToast({
-				title: '点击了中间的按钮',
-				mask: true,
-				duration: 2000
-			});
-		});
 	},
 	onShow: function() {
 		console.log('App Show');

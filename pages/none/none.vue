@@ -1,5 +1,9 @@
 <template>
-	<view><view>none</view></view>
+	<view>
+		<uni-nav-bar left-icon="back" left-text="返回" right-text="菜单" title="none">
+		</uni-nav-bar>
+		<navigator url="../about/about"><button type="warn">wx</button></navigator>
+	</view>
 </template>
 
 <script>

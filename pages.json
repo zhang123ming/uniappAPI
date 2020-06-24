@@ -39,6 +39,54 @@
             "path" : "components/list/list",
             "style" : {}
         }
+        ,{
+            "path" : "pages/wx/wx",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/about/about",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/me/me",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/order/order",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/list/list",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/edit/edit",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/menu/menu",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/item/item",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/age/age",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/sex/sex",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/banner/banner",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/back/back",
+            "style" : {}
+        }
     ],
 	"tabBar": {
 		"color": "#8a8a8a",

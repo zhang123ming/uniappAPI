@@ -6,9 +6,9 @@
 		</view>
 		<button type="warn" @click="compressImage">压缩图片</button>
 		<image v-if="comImg" :src="comImg"></image>
-		<button type="warn" @click="selectPic">选择图片</button>
-		<button type="warn" @click="selectPic">选择图片</button>
-		<button type="warn" @click="selectPic">选择图片</button>
+		<button type="warn">定位：{{ location }}</button>
+		<navigator url="../wx/wx"><button type="warn">wx</button></navigator>
+		<button type="warn" @click="postData">开始数据请求</button>
 		<button type="warn" @click="selectPic">选择图片</button>
 		<button type="warn" @click="selectPic">选择图片</button>
 		<button type="warn" @click="selectPic">选择图片</button>
@@ -25,17 +25,69 @@
 </template>
 
 <script>
+import config from './../../config/index.js';
 export default {
 	data() {
 		return {
 			imgList: [],
-			comImg: null
+			comImg: null,
+			location: []
 		};
 	},
 	onLoad() {
-		
+		this.getLocal();
+		// #ifdef APP-PLUS
+		this.getAPPAddress();
+		// #endif
 	},
 	methods: {
+		postData() {
+			// http://www.tianqiapi.com/api?version=v9&appid=23035354&appsecret=8YvlPNrz
+			const self = this;
+			self.$http.post('/api?version=v9&appid=23035354&appsecret=8YvlPNrz').then(res => {
+				console.log(res);
+			});
+		},
+		getAPPAddress() {
+			plus.geolocation.getCurrentPosition(
+				function(position) {
+					console.log(position);
+					plus.nativeUI.alert(position);
+				},
+				function(e) {
+					plus.nativeUI.alert('error=>>' + err);
+					console.log(e.message);
+				},
+				{
+					geocode: true
+				}
+			);
+		},
+		getLocal() {
+			uni.getLocation({
+				//默认wgs84返回gps坐标
+				//gcj02返回国测局坐标,可以用于uni.openLocation的坐标
+				type: 'wgs84',
+				//解析地址
+				geocode: true, //中文
+				success: data => {
+					uni.showToast({
+						title: data,
+						duration: 2000,
+						mask: true
+					});
+					console.log(data);
+
+					if (data.address) {
+						this.location = data;
+					}
+				},
+				fail: err => {
+					console.log(err);
+					// this.$api.msg('获取位置失败!')
+				}
+			});
+		},
 		// 压缩图片
 		compressImage() {
 			const self = this;
