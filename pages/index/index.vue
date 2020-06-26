@@ -1,14 +1,15 @@
 <template>
 	<view class="container">
+		<uni-fab :pattern="pattern" :content="content" :horizontal="horizontal" :vertical="vertical" :direction="direction" @trigger="trigger"></uni-fab>
 		<view :animation="animationData" style="background:red;height:10rpx;width:100rpx">内容</view>
-		<button type="primary">{{hour|timeAgo}}</button>
+		<button type="primary">{{ hour | timeAgo }}</button>
 		<!-- <button type="primary">{{'2019-11-22 12:23:59'|timeAgo}}</button> -->
-		<button type="warn">{{hour|filterSecond}}</button>
-		<button @click="rotateAndScale()" style="z-index: 999;">点我{{hour|filterHour}}</button>
+		<button type="warn">{{ hour | filterSecond }}</button>
+		<button @click="rotateAndScale()" style="z-index: 999;">点我{{ hour | filterHour }}</button>
 		<list></list>
 		<navigator url="../none/none"><button type="default">none页面跳转</button></navigator>
 		<uni-list>
-			<uni-list-item title="" note="" v-for="(item, index) in 100">
+			<uni-list-item title="" note="" v-for="(item, index) in 5">
 				{{ item }}==={{
 					Math.random()
 						.toString()
@@ -29,8 +30,24 @@ export default {
 	data() {
 		return {
 			animationData: {},
-			hour:new Date(),
-			time:"2020-05-12 12:35:12"
+			hour: new Date(),
+			time: '2020-05-12 12:35:12',
+			horizontal: 'left',
+			vertical: 'bottom',
+			direction: 'vertical',
+			popMenu: true,
+			pattern: {
+				color: '#3c3e49',
+				selectColor: '#007AFF',
+				backgroundColor: '#fff',
+				buttonColor: '#3c3e49'
+			},
+			content: [
+				{ text: '菜单1', active: true, iconPath: './../../static/01.png', selectedIconPath: './../../static/02.png' },
+				{ text: '菜单2', active: false, iconPath: './../../static/03.png', selectedIconPath: './../../static/04.png' },
+				{ text: '菜单3', active: false, iconPath: './../../static/05.png', selectedIconPath: './../../static/06.png' },
+				{ text: '菜单4', active: false, iconPath: './../../static/07.png', selectedIconPath: './../../static/08.png' }
+			]
 		};
 	},
 	onShow() {
@@ -69,22 +86,44 @@ export default {
 	},
 
 	methods: {
-		rotateAndScale: function () {
-				  // 旋转同时放大
-		 		 this.animation.rotate(90).scale(2, 2).step()
-		  		this.animationData = this.animation.export()
+		trigger(e) {
+			console.log(e);
+			// #ifdef APP-PLUS
+
+			uni.showToast({
+				title: `${e.index}`,
+				duration: 2000,
+				mask: true,
+				icon: 'loading'
+			});
+			// #endif
+
+			// #ifdef H5
+			plus.nativeUI.toast("I'am toast information!===="+e.index);
+			// #endif
 		},
-		rotateThenScale: function () {
-		  		// 先旋转后放大
-		 		 this.animation.rotate(45).step()
-		  		this.animation.scale(2, 2).step()
-		 		 this.animationData = this.animation.export()
+		rotateAndScale: function() {
+			// 旋转同时放大
+			this.animation
+				.rotate(90)
+				.scale(2, 2)
+				.step();
+			this.animationData = this.animation.export();
 		},
-		rotateAndScaleThenTranslate: function () {
-		  // 先旋转同时放大，然后平移
-		 		 this.animation.rotate(45).scale(2, 2).step()
-		 		 this.animation.translate(100, 100).step({ duration: 1000 })
-		 		 this.animationData = this.animation.export()
+		rotateThenScale: function() {
+			// 先旋转后放大
+			this.animation.rotate(45).step();
+			this.animation.scale(2, 2).step();
+			this.animationData = this.animation.export();
+		},
+		rotateAndScaleThenTranslate: function() {
+			// 先旋转同时放大，然后平移
+			this.animation
+				.rotate(45)
+				.scale(2, 2)
+				.step();
+			this.animation.translate(100, 100).step({ duration: 1000 });
+			this.animationData = this.animation.export();
 		},
 		goTop: function(e) {
 			uni.pageScrollTo({
@@ -119,7 +158,5 @@ export default {
 	bottom: 200upx;
 	z-index: 9999;
 	box-shadow: 0px 3px 5px 3px #93a2c1;
-
-	
 }
 </style>
